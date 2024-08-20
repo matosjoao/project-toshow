@@ -1,22 +1,7 @@
-interface EditorColorsConfig {
-    leftBar: string;
-    leftBarButtonText: string;
-    leftBarButtonTextHover: string;
-    panel: string;
-    panelTitleColor: string;
-    panelTitleBorderColor: string;
-    bottomBar: string;
-}
-
-export const EDITOR_COLORS_CONFIG: EditorColorsConfig = {
-    leftBar: 'bg-gradient-to-b from-blue-800 to-purple-700',
-    leftBarButtonText: 'text-white',
-    leftBarButtonTextHover: '',
-    panel: 'bg-white',
-    panelTitleColor: 'text-gray-800',
-    panelTitleBorderColor: 'border-gray-800',
-    bottomBar: 'bg-white',
-};
+import { PanelColor, PanelFrame, PanelGallery, PanelImage, PanelImageSettings, PanelLayers, PanelShape, PanelTemplate, PanelTemplateKeys, PanelText, PanelTextSettings, PanelUpload } from "./components/editor/action-detail-panel";
+import { BarImage, BarShape, BarText } from "./components/editor/action-top-bar";
+import { FrameIcon, GalleryIcon, ImageIcon, ShapeIcon, TemplateIcon, TextIcon, UploadIcon } from "./icons/Icons";
+import { ActionDetailPanel, ActionDetailPanelColor, ActionDetailPanelType, ArtPanelElementType, TextCreationAction } from "./types";
 
 interface ActionButtonType {
 	label: string;
@@ -48,6 +33,13 @@ export const EDITOR_ACTIONS_PANELS: ActionDetailPanel[] = [
     { id: 'layers', type: ActionDetailPanelType.PanelLayer, component: PanelLayers, shouldCloseOnElementChange: false },
     { id: 'template-keys', type: ActionDetailPanelType.PanelTemplateKeys, component: PanelTemplateKeys, shouldCloseOnElementChange: true },
 ];
+
+interface ActionDetailPanelText {
+	id: string;
+    title: string;
+    className: string;
+	action: TextCreationAction;
+}
 
 export const EDITOR_ACTIONS_PANEL_TEXT: ActionDetailPanelText[] = [
     { id: 'h1', title: 'Adicionar um Título', className: 'text-2xl', action: { text: 'Adicionar um Título', size: 68, width: 700, height: 100} },

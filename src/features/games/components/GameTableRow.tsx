@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { FormBadge } from "../../../components/form";
-import { IconPencil, IconTrash, IconDetailsMore } from "../../../icons";
+import { HiOutlineTrash, HiOutlinePencilAlt, HiMenuAlt2 } from "react-icons/hi";
 import { Game } from "../types";
 
 interface Props {
@@ -37,9 +37,9 @@ const GameTableRow: React.FC<Props> = ({game, index, isLastRow}) => {
             <td className="py-2 px-4 text-sm">{game.address || '-'}</td> 
             <td className="py-2 px-4 text-sm">
                 <div className="flex justify-center items-center">
-                    <NavLink to={`${game.id}`} className="w-5 h-5 text-purple-600 mr-2"><IconDetailsMore/></NavLink>
-                    <NavLink to={`${game.id}/edit`} className="w-5 h-5 text-orange-600 mr-2"><IconPencil/></NavLink>
-                    <NavLink to="" className="w-5 h-5 text-red-600 "><IconTrash/></NavLink>
+                    <NavLink to={`${game.id}`} className="text-lg text-purple-600 mr-2"><HiMenuAlt2/></NavLink>
+                    <NavLink to={`${game.id}/edit`} className="text-lg text-orange-600 mr-2"><HiOutlinePencilAlt/></NavLink>
+                    <NavLink to="" className="text-lg text-red-600 "><HiOutlineTrash /></NavLink>
                 </div>
             </td>
         </tr>

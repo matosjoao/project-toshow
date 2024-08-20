@@ -1,10 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { ActionDetailPanelState } from '../components/editor/action-detail-panel/types';
-import { FrameImageSrcAction, FrameImageTransformAction, ImageStyleAction, ShapeStyleAction, TransformActionElement, TransformType } from '../components/editor/art-panel/type';
-import { ArtPanelElement, ArtPanelElementType } from '../components/editor/elements/type';
-import { ImageCreationAction } from '../components/editor/action-detail-panel/panel-image/PanelImage';
-import { TextStyleAction } from '../components/editor/action-top-bar/bar-text/BarText';
-import { TemplateKey } from '../api/templates/types';
+import { ActionDetailPanelState, ArtPanelElement, ArtPanelElementType, FrameImageSrcAction, FrameImageTransformAction, ImageCreationAction, ImageStyleAction, ShapeStyleAction, TemplateKey, TextStyleAction, TransformActionElement, TransformType } from '../types';
 
 interface EditorState {
     scale: number;

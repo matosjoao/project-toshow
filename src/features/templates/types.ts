@@ -1,5 +1,7 @@
 import { CSSProperties, FC } from "react";
 
+// TODO:: Improve this file
+
 export type TemplateType = {
     id: number,
     name: string,
@@ -223,3 +225,42 @@ export interface ShapeStyleAction {
     color?: string;
     index?: number;
 }
+
+export interface ImageCreationAction {
+    image: ImageResponse;
+}
+
+export interface TextCreationAction {
+    text: string;
+    width: number;
+    height: number;
+    size: number;
+}
+
+export interface ShapeCreationAction {
+    shape: ShapeResponse
+}
+
+export interface FrameCreationAction {
+    frame: FrameResponse;
+}
+
+export interface ActionDetailPanelColor {
+	id: string;
+    color: string;
+}
+
+export interface ShapeColorAction {
+	index: number;
+    color: string;
+}
+
+/**
+ * Art Panel Bar Types
+ */
+export interface TextStyleAction {
+	styles: CSSProperties;
+    width?: number;
+    height?: number;
+}
+

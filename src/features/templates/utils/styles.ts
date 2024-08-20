@@ -1,4 +1,4 @@
-import { ArtPanelElement } from "../components/editor/elements/type";
+import { ArtPanelElement } from "../types";
 
 export const measureText = (element: ArtPanelElement) => {
     const tempElement = document.createElement('p');

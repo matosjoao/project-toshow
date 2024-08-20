@@ -3,7 +3,7 @@ import SearchInput from "../../../components/search-input/SearchInput";
 import useFetch from "../../../hooks/useFetch";
 import PageContainer from "../../../components/page-container/PageContainer";
 import { NavLink, useNavigate } from "react-router-dom";
-import { IconPencil, IconTrash } from "../../../icons";
+import { HiOutlineTrash, HiOutlinePencilAlt } from "react-icons/hi";
 import { FormButton } from "../../../components/form";
 import { ButtonStyle } from "../../../components/form/form-button/types";
 import { Team } from "../../../features/teams/types";
@@ -23,8 +23,8 @@ const TeamsPage: React.FC = () => {
 				<td className="py-2 px-4 text-sm">{team.abbreviation || '-'}</td>
 				<td className="py-2 px-4 text-sm">
 					<div className="flex justify-center items-center">
-						<NavLink to={`${team.id}/edit`} className="w-5 h-5 text-orange-600 mr-2"><IconPencil/></NavLink>
-						<NavLink to="" className="w-5 h-5 text-red-600"><IconTrash/></NavLink>
+						<NavLink to={`${team.id}/edit`} className="text-lg text-orange-600 mr-2"><HiOutlinePencilAlt/></NavLink>
+						<NavLink to="" className="text-lg text-red-600"><HiOutlineTrash/></NavLink>
 					</div>
 				</td>
 			</tr>

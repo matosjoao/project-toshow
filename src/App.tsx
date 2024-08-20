@@ -7,7 +7,7 @@ import RootLayout from "./layouts/RootLayout";
 import ErrorPage from "./pages/ErrorPage";
 import { TeamCreatePage, TeamEditPage, TeamsPage } from './pages/admin/teams';
 import { GameCreatePage, GameDetailPage, GamesPage } from "./pages/games";
-import { TemplatesPage } from "./pages/templates";
+import { TemplateEditorPage, TemplatesPage } from "./pages/templates";
 
 const router = createBrowserRouter([
 	{
@@ -23,8 +23,8 @@ const router = createBrowserRouter([
 				loader: checkAuthLoader,
 				children: [
 					{ index: true, element: <TemplatesPage /> },
-					/* { path: 'create',element: <EditorPage /> }, */
-					/* { path: ':templateId/edit', element: <EditorPage /> }, */
+					{ path: 'create',element: <TemplateEditorPage /> },
+					{ path: ':templateId/edit', element: <TemplateEditorPage /> },
 				]
 			},
 			{

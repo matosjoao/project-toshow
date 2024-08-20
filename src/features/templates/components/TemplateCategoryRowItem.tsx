@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import { IconBxsMessageAltDetail, IconCalendarEventFill, IconCalendarDays, IconUsers, IconClipboardList, IconFootball, IconScoreboard, IconWhistle, IconFileBlank } from '../../../icons';
 
+// TODO:: Improve remove this icons
 function getTemplateIconByType(name: string) {
     switch (name) {
         case 'match-day':

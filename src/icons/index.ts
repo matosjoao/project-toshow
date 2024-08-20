@@ -1,0 +1,10 @@
+export { default as IconBxsMessageAltDetail } from './IconBxsMessageAltDetail';
+export { default as IconCalendarDays } from './IconCalendarDays';
+export { default as IconCalendarEventFill } from './IconCalendarEventFill';
+export { default as IconClipboardList } from './IconClipboardList';
+export { default as IconFileBlank } from './IconFileBlank';
+export { default as IconFootball } from './IconFootball';
+export { default as IconScoreboard } from './IconScoreboard';
+export { default as IconSearch } from './IconSearch';
+export { default as IconUsers } from './IconUsers';
+export { default as IconWhistle } from './IconWhistle';

@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { FormActions, FormBadge, FormButton, FormLabel, FormSingleAccordion } from "../../components/form";
 import PageContainer from "../../components/page-container/PageContainer";
 import useFetch from "../../hooks/useFetch";
 import { IconCalendarEventFill } from "../../icons";
 import { ButtonStyle } from "../../components/form/form-button/types";
-import { useState } from "react";
 import { getGame, getGameImage } from "../../features/games";
 import { Game } from "../../features/games/types";
 

@@ -1,9 +1,8 @@
 import useFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getTemplateTypes, TemplateCategoryRow, TemplateGalleryRow } from "../../features/templates";
+import { getTemplateTypes, initEditor, TemplateCategoryRow, TemplateGalleryRow } from "../../features/templates";
 import { TemplateTypeResponse } from "../../features/templates/types";
-import { initEditor } from "../../features/templates/store/editor-slice";
 
 const TemplatesPage: React.FC = () => {
     const { data, isFetching } = useFetch<TemplateTypeResponse[]>(getTemplateTypes, []) ;

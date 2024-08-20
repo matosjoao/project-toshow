@@ -1,12 +1,6 @@
 import { FetchResultType } from "../../../hooks/useFetch";
 import fetchApi from "../../../lib/fetch";
-import { generateUUID } from "../../../utils/random";
 import { ArtPanelElement, TemplateKey } from "../types";
-
-type DataRequest = {
-    id: string,
-    generateIds: boolean
-}
 
 type DataResponse = {
     id: number,
@@ -17,22 +11,8 @@ type DataResponse = {
     elements: ArtPanelElement[],
 }
 
-const getTemplate = async (params: DataRequest) => {
-    if (!params) {
-        throw new Error('Invalid id.');
-    }
-    
-    const response = await fetchApi<FetchResultType<DataResponse>>(`templates/${params.id}`);
-
-    if(params.generateIds) {
-        const elements = [...response.data.data.elements];
-        elements.forEach(element => {
-            const id = generateUUID();
-            element.elementId = id || element.id;
-        });
-
-        response.data.data.elements = elements;
-    }
+const getTemplate = async (id: string) => {
+    const response = await fetchApi<FetchResultType<DataResponse>>(`templates/${id}`);
 
     return response.data;
 };

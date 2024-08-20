@@ -1,24 +1,29 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { initEditor } from "../../features/templates/store/editor-slice";
 import { useParams } from "react-router-dom";
-import ArtPanel from "../../components/editor/art-panel/ArtPanel";
-import EditorBottomBar from "../../components/editor/EditorBottomBar";
-import EditorLeftPanel from "../../features/templates/components/editor/EditorLeftPanel";
-import EditorTopBar from "../../components/editor/EditorTopBar";
-
+import { ArtPanel, EditorBottomBar, EditorLeftPanel, EditorTopBar, getTemplate, initEditor } from "../../features/templates";
 
 const EditorPage: React.FC = () => {
     const params = useParams();
     const dispatch = useDispatch();
     //const { data, isFetching } = useFetch<TemplateResponse, TemplateRequest>(getTemplateWithParams, initialState, false) ;
 
-    /* useEffect(() => {
-
+    useEffect(() => {
+        // TODO:: Check if this is the best way to do it
         async function fetchTemplate(id: string) {
             try {
-              const { data } = await getTemplate({id: id, generateIds: true});
-              dispatch(initEditor({width: data.width, height: data.height, templateType: data.templateType, templateKeys: data.templateKeys, elements: data.elements }));
+                const { data } = await getTemplate(id);
+              
+                /* 
+                const elements = [data.elements];
+                elements.forEach(element => {
+                    const id = generateUUId();
+                    element.elementId = id || element.id;
+                });
+                data.elements = elements; 
+                */
+
+                dispatch(initEditor({width: data.width, height: data.height, templateType: data.templateType, templateKeys: data.templateKeys, elements: data.elements }));
             } catch (error) {
               console.log(error);
             }
@@ -28,7 +33,7 @@ const EditorPage: React.FC = () => {
             fetchTemplate(params.templateId);
         }
 
-    }, [dispatch, params]); */
+    }, [dispatch, params]);
 
 	return (
 		<div className="flex flex-grow overflow-hidden">
@@ -55,9 +60,6 @@ const EditorPage: React.FC = () => {
             </div>
         </div>
 	);
-
-	// TODO:: Delete this and the editor component
-	/* return <Editor />; */
 };
 
 export default EditorPage;
