@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for the range input thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    background: #1f2937;
+    border-radius: 25%;
+    cursor: pointer;
+}
+
+/* Styles for Mozilla Firefox */
+input[type="range"]::-moz-range-thumb {
+    width: 1rem;
+    height: 1rem;
+    background: #1f2937;
+    border-radius: 25%;
+    cursor: pointer;
+}
+
+/* Styles for Microsoft Edge */
+input[type="range"]::-ms-thumb {
+    width: 1rem;
+    height: 1rem;
+    background: #1f2937;
+    border-radius: 25%;
+    cursor: pointer;
+}
+
+/* For Webkit browsers (e.g., Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* For Firefox */
+.scrollbar-thin {
+    scrollbar-width: thin;
+}
+
+.scrollbar-thumb-gray-500 {
+    scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0);
+}
+
+.scrollbar-gray-200 {
+    scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0.1);
+}
+
+.e-selectable-rounded-outline::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 4px solid rgb(126 34 206); /* Outline color and width */
+    opacity: 0; /* Initially hidden */
+    border-radius: 10px; /* Same border-radius as the element */
+    pointer-events: none;
+}
+
+.e-selectable-rounded-outline:hover::before {
+    opacity: 1; /* Visible on hover */
+}
