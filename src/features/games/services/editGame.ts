@@ -1,6 +1,6 @@
 import fetchApi from "../../../lib/fetch";
 
-type DataRequest = {
+export type DataRequest = {
     startDate: string,
     address: string,
     round: string,

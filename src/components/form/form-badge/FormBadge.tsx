@@ -5,7 +5,7 @@ interface Props {
 
 const FormBadge: React.FC<Props> = ({letter, classes}) => {
     return (
-        <div className={`flex items-center justify-center w-12 h-12 rounded-full bg-gray-500 text-white text-center font-bold text-2xl ${classes}`}>
+        <div className={`flex flex-none items-center justify-center w-12 h-12 rounded-full bg-gray-500 text-white text-center font-bold text-2xl ${classes}`}>
             {letter.toUpperCase()}
         </div>
     );

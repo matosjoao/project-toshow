@@ -1,17 +1,47 @@
-import { Form, useActionData, useNavigation } from "react-router-dom";
-import { FormSelect } from "../../components/form";
-
-type ApiLoginResponse = {
-	message: string,
-	errors?: Array<string>,
-	token?: string,
-}
+import { useNavigate } from "react-router-dom";
+import { FormContainer, FormSelect } from "../../components/form";
+import { FormEvent, useState } from "react";
+import { login, LoginDataRequest } from "../../features/auth";
+import { toastError } from "../../utils/toast";
 
 const LoginPage: React.FC = () => {
-    const data = useActionData() as ApiLoginResponse;
-    const navigation = useNavigation();
+    const navigate = useNavigate();
+    const [isSaving, setIsSaving] = useState(false);
 
-    const isSubmitting = navigation.state === 'submitting';
+    const onSubmitFormHandler = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const form = e.target as HTMLFormElement;
+        const fd = new FormData(form);
+        const data = Object.fromEntries(fd.entries());
+        
+        const request: LoginDataRequest = {
+            email: data.email as string,
+            password: data.password as string,
+            year: data.year as string
+        };
+
+        try {
+            setIsSaving(true);
+            
+            const result = await login(request);
+            
+
+            const token = result.token;
+            localStorage.setItem('token', token);
+            // TODO:: Implement expiration
+            //localStorage.setItem('expiration', '');
+            
+            navigate('/');
+        } catch (error) {
+            setIsSaving(false);
+            if (error instanceof Error) {
+                toastError(error.message);
+            } else {
+                toastError("Ocurreu um erro ao gravar a equipa, por favor tente mais tarde ou contacte o administrador.");
+            }
+        }
+    };
 
 	return (
         <div className="min-h-screen flex">
@@ -19,7 +49,7 @@ const LoginPage: React.FC = () => {
             <div className="w-full md:w-1/2 bg-white flex items-center justify-center">
                 <div className="p-8 max-w-md w-full">
                     <h2 className="text-3xl font-bold text-gray-800 mb-6">Bem-vindo de volta!</h2>
-                    <Form method="post" className="space-y-4">
+                    <FormContainer onSubmitForm={onSubmitFormHandler}> 
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700 pb-1"> Email </label>
                             <input type="email" id="email" name="email" className="w-full border border-gray-300 p-2 rounded-lg" required />
@@ -37,16 +67,10 @@ const LoginPage: React.FC = () => {
                             defaultSelectedOptionId="1"
                             options={[{id: '1', text: '2024/2025'}, {id: '2', text: '2025/2026'}]} 
                             />
-                        <div>
-                            {(data && data.errors) && data.errors.map((error, index) => {
-                                return (<p key={index} className="text-xs text-red-500 p-2">{error}</p>);
-                            })}
-                            {(data && !data.errors && data.message) && <p className="text-xs text-red-500 p-2">{data.message}</p> }
-                        </div>
-                        <button type="submit" className="w-full bg-blue-500 text-white p-3 rounded-lg font-medium hover:bg-blue-700" disabled={isSubmitting}>
-                            {isSubmitting ? 'Entrar...' : 'Entrar'} 
+                        <button type="submit" className="w-full bg-blue-500 text-white p-3 rounded-lg font-medium hover:bg-blue-700" disabled={isSaving}>
+                            {isSaving ? 'Entrar...' : 'Entrar'} 
                         </button>
-                    </Form>
+                    </FormContainer>
                 </div>
             </div>
         </div>

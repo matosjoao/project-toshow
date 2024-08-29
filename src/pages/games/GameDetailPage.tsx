@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FormActions, FormBadge, FormButton, FormLabel, FormSingleAccordion } from "../../components/form";
 import PageContainer from "../../components/page-container/PageContainer";
 import useFetch from "../../hooks/useFetch";
-import { IconCalendarEventFill } from "../../icons";
+import { IconCalendarEventFill } from "../../features/templates/icons";
 import { ButtonStyle } from "../../components/form/form-button/types";
 import { getGame, getGameImage } from "../../features/games";
 import { Game } from "../../features/games/types";
@@ -21,7 +21,7 @@ const GameDetailPage: React.FC = () => {
 		}
 
 		try {
-			const result = await getGameImage(gameId, "1");
+			const result = await getGameImage({game: gameId, templateType: "1"});
 			const imageUrl = window.URL.createObjectURL(result);
 			setImageSrc(imageUrl);
 			setTimeout(() => {

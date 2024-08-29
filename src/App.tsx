@@ -1,13 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { action as loginAction} from "./pages/login/action";
 import { checkAuthLoader, tokenLoader } from "./utils/auth";
 import LoginPage from "./pages/login/LoginPage";
 import DashboardPage from "./pages/dashboard/DashboardPage";
 import RootLayout from "./layouts/RootLayout";
 import ErrorPage from "./pages/ErrorPage";
 import { TeamCreatePage, TeamEditPage, TeamsPage } from './pages/admin/teams';
-import { GameCreatePage, GameDetailPage, GamesPage } from "./pages/games";
+import { GameCreatePage, GameEditPage, GameDetailPage, GamesPage } from "./pages/games";
 import { TemplateEditorPage, TemplatesPage } from "./pages/templates";
+import { PlayerCreatePage, PlayerDetailPage, PlayerEditPage, PlayersPage } from "./pages/players";
 
 const router = createBrowserRouter([
 	{
@@ -34,8 +34,21 @@ const router = createBrowserRouter([
 					{ index: true, element: <GamesPage /> },
 					{ path: 'create', element: <GameCreatePage /> },
 					{ path: ':gameId', element: <GameDetailPage /> },
+					{ path: ':gameId/edit', element: <GameEditPage /> },
 				]
 			},
+			{
+				path: 'players',
+				loader: checkAuthLoader,
+				children: [
+					{ index: true, element: <PlayersPage /> },
+					{ path: 'create', element: <PlayerCreatePage /> },
+					{ path: ':playerId/', element: <PlayerDetailPage /> },
+					{ path: ':playerId/edit', element: <PlayerEditPage /> },
+				]
+			},
+
+
 
 			{
 				path: 'teams',
@@ -51,7 +64,6 @@ const router = createBrowserRouter([
 	{
 		path: '/login',
 		element: <LoginPage />,
-		action: loginAction
 	},
 ]);
 

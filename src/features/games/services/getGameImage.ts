@@ -1,29 +1,18 @@
-import { getAuthToken } from "../../../utils/auth";
+import fetchApi from "../../../lib/fetch";
 
-const API_BASE_URL = 'http://127.0.0.1:8000/api/';
+type DataRequest = {
+    game: string,
+    templateType: string
+}
 
-const getGameImage = async (gameId: string, templateTypeId: string) => {
-    const token = getAuthToken();
-    
-    const response = await fetch(`${API_BASE_URL}game-image`, { 
+const getGameImage = async (data: DataRequest) => {
+    const response = await fetchApi<Blob>('game-image', { 
         method: 'POST',
-        headers: {
-            'Authorization': 'Bearer ' + token,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            game: gameId,
-            templateType: templateTypeId
-        })
+        body: JSON.stringify(data),
+        responseType: 'blob'
     });
 
-    if (!response.ok) {
-        throw new Error('Erro ao obter imagem');
-    }
-
-    const result = await response.blob();
-
-    return result;
+    return response.data;
 };
 
-export default getGameImage;
+export default getGameImage; 

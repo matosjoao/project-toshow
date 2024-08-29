@@ -9,6 +9,7 @@ import { createGame } from "../../features/games";
 import { GameCreateRequest } from "../../features/games/types";
 import { Team } from "../../features/teams/types";
 import { getTeams } from "../../features/teams";
+import { getLevels, Level } from "../../services/levels";
 
 type TeamSelectOptionProps = BaseSelectOption & Team;
 
@@ -33,8 +34,9 @@ const GameCreatePage: React.FC = () => {
     const navigate = useNavigate();
     const [isSaving, setIsSaving] = useState(false);
     const { data:teamsData } = useFetch<Team[]>(getTeams, []) ;
-
     const teams = teamsData ? teamsData.map((team) => ({...team, text: team.name })) : [];
+    const { data:levelsData } = useFetch<Level[]>(getLevels, []) ;
+    const levels = levelsData ? levelsData.map((level) => ({...level, text: level.name })) : [];
 
     const onSubmitFormHandler = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -89,7 +91,7 @@ const GameCreatePage: React.FC = () => {
                     <FormSelect 
                         label="Equipa Visitada Escalão" 
                         id="homeTeamLevel"
-                        options={[{id: "1", text: "Séniores"}]}
+                        options={levels}
                         required={true}
                         placeholder="Equipa Visitada Escalão"
                         containerClassesNames="flex-1"
@@ -109,7 +111,7 @@ const GameCreatePage: React.FC = () => {
                     <FormSelect 
                         label="Equipa Visitante Escalão" 
                         id="awayTeamLevel"
-                        options={[{id: "1", text: "Séniores"}]}
+                        options={levels}
                         required={true}
                         placeholder="Equipa Visitante Escalão"
                         containerClassesNames="flex-1"
@@ -141,7 +143,7 @@ const GameCreatePage: React.FC = () => {
                 <FormSelect 
                     label="Escalão do jogo" 
                     id="level"
-                    options={[{id: "1", text: "Séniores"}]}
+                    options={levels}
                     required={true}
                     containerClassesNames="flex-1"
                     placeholder="Escalão do jogo"
@@ -155,10 +157,10 @@ const GameCreatePage: React.FC = () => {
                     }}  
                 />
                 <FormInput 
-                    label="Ronda" 
+                    label="Jornada" 
                     id="round" 
                     inputProps={{
-                        placeholder: "Ronda do jogo",
+                        placeholder: "Jornada do jogo",
                         autoComplete: "off"
                     }} 
                 />

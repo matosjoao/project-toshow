@@ -1,5 +1,5 @@
 import { ChangeEvent, KeyboardEvent, forwardRef, useState } from "react";
-import { IconSearch } from "../../icons";
+import { IconSearch } from "../../features/templates/icons";
 
 interface Props {
     onSearch: (term: string) => void;

@@ -37,9 +37,8 @@ const EditorPage: React.FC = () => {
 
 	return (
 		<div className="flex flex-grow overflow-hidden">
-            
             <EditorLeftPanel />
-
+            
             <div className="flex flex-col flex-grow bg-gray-200">
                 <EditorTopBar />
 

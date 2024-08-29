@@ -42,7 +42,6 @@ export const editorSlice = createSlice({
     initialState,
     reducers: {
         initEditor: (_state, action: PayloadAction<{width: number, height: number, templateType: number, templateKeys: TemplateKey[], elements?: Array<ArtPanelElement>}>) => {
-            console.log(action.payload.elements);
             return {
                 ...initialState,
                 width: action.payload.width, 

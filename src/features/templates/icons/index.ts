@@ -8,3 +8,4 @@ export { default as IconScoreboard } from './IconScoreboard';
 export { default as IconSearch } from './IconSearch';
 export { default as IconUsers } from './IconUsers';
 export { default as IconWhistle } from './IconWhistle';
+export { default as IconTemplate } from './IconTemplate';

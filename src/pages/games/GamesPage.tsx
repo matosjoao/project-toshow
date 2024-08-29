@@ -36,7 +36,7 @@ const GamesPage: React.FC = () => {
 
 	return (
 		<PageContainer title="Jogos">
-			<div className="flex flex-col sm:flex-row justify-between items-center mb-4">
+			<div className="flex flex-col sm:flex-row justify-between items-center mb-2">
 				<div className="flex flex-1" />
 				<div className="flex flex-1 justify-center my-4 mx-2">
 					<SearchInput ref={searchInputRef} onSearch={onSearchHandler}/>
@@ -45,7 +45,7 @@ const GamesPage: React.FC = () => {
 					<FormButton style={ButtonStyle.SUCCESS} onClick={() => navigate('create')}>Adicionar</FormButton>
 				</div>
 			</div>
-			<Table headerTitles={["Equipas", "Data", "Local", ""]} rows={mappedRows} isFetching={isFetching} />
+			<Table headerTitles={["Equipas", "Data", "Escalão", "Jornada", ""]} rows={mappedRows} isFetching={isFetching} />
 			<TablePagination page={pagination.page} pages={pagination.pages} onPrevious={onPreviousClickHandler} onNext={onNextClickHandler} />
 		</PageContainer>
 	);

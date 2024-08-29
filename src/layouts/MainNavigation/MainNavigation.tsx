@@ -34,6 +34,7 @@ const MainNavigation: React.FC = () => {
                     <nav>
                         <ul className="flex md:space-x-4 lg:space-x-6">
                             <li className="hover:scale-[1.1]"><MainNavigationMenuItem path="/" title="Dashboard"/></li>
+                            <li className="hover:scale-[1.1]"><MainNavigationMenuItem path="/players" title="Jogadores"/></li>
                             <li className="hover:scale-[1.1]"><MainNavigationMenuItem path="/games" title="Jogos"/></li>
                             <li className="hover:scale-[1.1]"><MainNavigationMenuItem path="/templates" title="Templates"/></li>
                         </ul>
@@ -52,6 +53,7 @@ const MainNavigation: React.FC = () => {
                         <nav>
                             <ul className="py-2">
                                 <li className="text-md text-gray-800 font-thin px-4 py-2 hover:bg-gray-200 cursor-pointer">Dashboard</li>
+                                <li className="text-md text-gray-800 font-thin px-4 py-2 hover:bg-gray-200 cursor-pointer">Jogadores</li>
                                 <li className="text-md text-gray-800 font-thin px-4 py-2 hover:bg-gray-200 cursor-pointer">Jogos</li>
                                 <li className="text-md text-gray-800 font-thin px-4 py-2 hover:bg-gray-200 cursor-pointer">Templates</li>
                             </ul>

@@ -34,7 +34,8 @@ const GameTableRow: React.FC<Props> = ({game, index, isLastRow}) => {
                 </div>
             </td>
             <td className="py-2 px-4 text-sm">{game.startDate}</td>
-            <td className="py-2 px-4 text-sm">{game.address || '-'}</td> 
+            <td className="py-2 px-4 text-sm">{game.level}</td>
+            <td className="py-2 px-4 text-sm">{game.round}</td>
             <td className="py-2 px-4 text-sm">
                 <div className="flex justify-center items-center">
                     <NavLink to={`${game.id}`} className="text-lg text-purple-600 mr-2"><HiMenuAlt2/></NavLink>

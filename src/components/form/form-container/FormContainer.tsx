@@ -3,7 +3,6 @@ import { FormEvent, FormHTMLAttributes, ReactNode } from "react";
 interface Props {
     onSubmitForm?: (e: FormEvent<HTMLFormElement>) => void;
     children: ReactNode;
-    encType?: string;
     formProps?: FormHTMLAttributes<HTMLFormElement>;
 }
 

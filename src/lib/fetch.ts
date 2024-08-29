@@ -4,6 +4,7 @@ interface FetchOptions {
     method?: string;
     headers?: Record<string, string>;
     body?: string | FormData; 
+    responseType?: 'json' | 'blob';
 }
 
 interface FetchResponse<T> {
@@ -18,7 +19,7 @@ const fetchApi = async <T>(endpoint: string, options: FetchOptions = {}): Promis
     
     const token = getAuthToken();
     
-    const { method = 'GET', headers = {}, body } = options;
+    const { method = 'GET', headers = {}, body, responseType = 'json' } = options;
 
     const finalHeaders = {
         'Authorization': `Bearer ${token}`,
@@ -32,10 +33,19 @@ const fetchApi = async <T>(endpoint: string, options: FetchOptions = {}): Promis
         body,
     });
 
-    const data = await response.json();
+    let data;
+    switch (responseType) {
+        case 'blob':
+            data = (await response.blob());
+            break;
+        case 'json':
+        default:
+            data = (await response.json());
+            break;
+    }
 
     if (!response.ok) {
-        throw new Error(data.message || 'An error occurred');
+        throw new Error(data.message || 'Ocurreu um erro, por favor tente mais tarde.');
     }
 
     return {
